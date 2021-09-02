@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: {{ .Chart.Name }}
+  name: {{ .Chart.Name }}-config
+data:
+  config_local.py: |-
+      import os
+      _BASEDIR = '/var/lib/pgadmin/data'
+      LOG_FILE = os.path.join(_BASEDIR, 'logfile')
+      SQLITE_PATH = os.path.join(_BASEDIR, 'sqlite.db')
+      STORAGE_DIR = os.path.join(_BASEDIR, 'storage')
+      SESSION_DB_PATH = os.path.join(_BASEDIR, 'sessions')
+      ENHANCED_COOKIE_PROTECTION = False
+  servers.json: |-
+    {
+      "Servers": {
+        "1": {
+          "Name": "Registry",
+          "Group": "Servers",
+          "Port": {{ .Values.pgadmin.db.port }},
+          "Username": "application_role",
+          "Host": {{ quote .Values.pgadmin.db.host }},
+          "SSLMode": "prefer",
+          "MaintenanceDB": "registry",
+          "DB restriction": "registry"
+        }
+      }
+    }

@@ -1,0 +1,17 @@
+name: pgadmin
+
+pgadmin:
+  image: dpage/pgadmin4
+  user:
+    login: admin@epam.com
+    password: qwerty
+  db:
+    host: citus-master
+    port: 5432
+
+ingress:
+  enabled: true
+  annotations: {}
+  host: pgadmin-chart
+  path: "/"
+  tls: []

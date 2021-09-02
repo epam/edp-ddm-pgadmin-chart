@@ -1,0 +1,26 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    {{ template "admin-routes.whitelist.annotation" . }}
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  {{- if .Values.ingress.site }}
+  host: {{ .Values.ingress.site }}-{{ .Values.namespace }}.{{ .Values.dnsWildcard }}
+  {{end}}
+  path: {{ .Values.ingress.path }}
+  port:
+    targetPort: 5050
+  to:
+    kind: Service
+    name: {{ .Chart.Name }}
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress: []
+

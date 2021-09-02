@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  ports:
+    - name: api
+      protocol: TCP
+      port: 5050
+      targetPort: 5050
+  selector:
+    app: {{ .Chart.Name }}
+  type: ClusterIP
