@@ -1,3 +1,4 @@
+{{- if eq .Values.global.deploymentMode "development" }}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -23,4 +24,4 @@ spec:
   wildcardPolicy: None
 status:
   ingress: []
-
+{{- end }}

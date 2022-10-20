@@ -1,3 +1,6 @@
+global:
+  deploymentMode: development
+
 name: pgadmin
 
 pgadmin:

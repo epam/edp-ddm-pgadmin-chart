@@ -1,3 +1,4 @@
+{{- if eq .Values.global.deploymentMode "development" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -56,3 +57,4 @@ spec:
             defaultMode: 0664
         - name: pgadmin-data
           emptyDir: {}
+{{- end }}
