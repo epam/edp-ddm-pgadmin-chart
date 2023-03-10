@@ -18,3 +18,8 @@ ingress:
   host: pgadmin-chart
   path: "/"
   tls: []
+
+edpComponent:
+  description: "Користувацький інтерфейс для перегляду даних та схеми моделі даних реєстру"
+  displayName: "Веб-інтерфейс перегляду даних реєстру (pgAdmin)"
+  operationalZone: "registry-administration-zone"
