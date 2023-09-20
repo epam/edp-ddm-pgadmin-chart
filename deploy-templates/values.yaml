@@ -20,6 +20,6 @@ ingress:
   tls: []
 
 edpComponent:
-  description: "Користувацький інтерфейс для перегляду даних та схеми моделі даних реєстру"
+  description: "Користувацький інтерфейс для перегляду даних та схеми моделі даних реєстру."
   displayName: "Веб-інтерфейс перегляду даних реєстру (pgAdmin)"
   operationalZone: "registry-administration-zone"
