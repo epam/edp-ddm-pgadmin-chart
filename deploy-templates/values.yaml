@@ -1,5 +1,13 @@
 global:
+  container:
+    requestsLimitsEnabled: true
   deploymentMode: development
+  registry:
+    pgAdmin:
+      container:
+        resources:
+          requests: {}
+          limits: {}
 
 name: pgadmin
 

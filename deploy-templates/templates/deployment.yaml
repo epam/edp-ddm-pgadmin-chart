@@ -24,9 +24,10 @@ spec:
           ports:
             - containerPort: 5050
               protocol: TCP
+          {{- if .Values.global.container.requestsLimitsEnabled }}
           resources:
-            requests:
-              memory: 500Mi
+            {{- toYaml .Values.global.registry.pgAdmin.container.resources | nindent 12 }}
+          {{- end }}
           env:
             - name: PGADMIN_DEFAULT_EMAIL
               valueFrom:
